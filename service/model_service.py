@@ -40,11 +40,19 @@ def predict_review_rating(review_text: str):
     pred_prob = model.predict(seq_pad)
     pred_label = int(np.argmax(pred_prob, axis=1)[0])
     predicted_rating = float(le.inverse_transform([pred_label])[0])
-    sentiment_label = (
-        "positive"
-        if predicted_rating >= 4
-        else ("neutral" if predicted_rating == 3 else "negative")
-    )
+    # Gán sentiment_label rõ ràng cho từng mức từ 1 đến 5
+    if predicted_rating == 1:
+        sentiment_label = "very_negative"
+    elif predicted_rating == 2:
+        sentiment_label = "negative"
+    elif predicted_rating == 3:
+        sentiment_label = "neutral"
+    elif predicted_rating == 4:
+        sentiment_label = "positive"
+    elif predicted_rating == 5:
+        sentiment_label = "very_positive"
+    else:
+        sentiment_label = "neutral"
     confidence = float(np.max(pred_prob))
     return {
         "processed_text": processed_text,
