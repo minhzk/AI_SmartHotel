@@ -9,8 +9,8 @@ from nltk.corpus import stopwords
 # Đảm bảo đường dẫn model đúng tuyệt đối (dựa trên vị trí file này)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_PATH = os.path.join(BASE_DIR, "models", "sentiment_lstm_model.h5")
-TOKENIZER_PATH = os.path.join(BASE_DIR, "train", "tokenizer.pkl")
-LABEL_ENCODER_PATH = os.path.join(BASE_DIR, "train", "label_encoder.pkl")
+TOKENIZER_PATH = os.path.join(BASE_DIR, "models", "tokenizer.pkl")
+LABEL_ENCODER_PATH = os.path.join(BASE_DIR, "models", "label_encoder.pkl")
 MAX_SEQUENCE_LENGTH = 250
 
 model = tf.keras.models.load_model(MODEL_PATH)

@@ -125,8 +125,6 @@ dmypy.json
 .pyre/
 
 # ML/AI specific
-models/*.pkl
-models/*.h5
 models/*.joblib
 models/*.model
 models/large_models/
@@ -154,11 +152,8 @@ variables/
 
 # Data files
 *.csv
-*.json
 *.parquet
-*.h5
 *.hdf5
-*.pkl
 *.pickle
 
 # IDE
@@ -175,10 +170,6 @@ variables/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Docker
-Dockerfile
-.dockerignore
 
 # Cache
 .cache/
@@ -241,8 +232,6 @@ temp/
 tmp/
 
 # AI Models (large files)
-*.pkl
-*.h5
 *.model
 models/large_models/
 
@@ -258,6 +247,3 @@ coverage/
 # Temporary files
 *.tmp
 *.temp
-
-# Railway/Deployment
-.railway/
