@@ -8,7 +8,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), "service"))
 from service.model_service import predict_review_rating
 
-app = FastAPI()
+app = FastAPI(title="SmartHotel AI Service", version="1.0.0")
 
 
 class AnalyzeRequest(BaseModel):
@@ -78,6 +78,21 @@ def analyze_single_review(req: AnalyzeSingleRequest):
         model_version=result.get("model_version"),
         processing_time_ms=processing_time_ms,
     )
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Railway deployment"""
+    return {
+        "status": "healthy",
+        "service": "SmartHotel AI Service",
+        "version": "1.0.0",
+        "timestamp": "2025-05-28"
+    }
+
+@app.get("/")
+async def root():
+    """Root endpoint"""
+    return {"message": "SmartHotel AI Service is running"}
 
 
 """
